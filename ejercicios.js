@@ -472,31 +472,36 @@ validarPatron("Andres Restrepo",/^[A-Za-zÑñ\s]+$/g);
 
 // 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
 
-// const devolverCuadrados = (arr = undefined) => {
-//     if (arr === undefined) return console.warn("No ingresaste un arreglo");
 
-//     if(!(arr instanceof Array)) return console.warn("El valor que ingresaste NO es un arreglo");
+//EJERCICIO XXI
 
-//     if (arr.length === 0) return console.warn("El arreglo esta vacio");
+const devolverCuadrados = (arr = undefined) => {
+    if (arr === undefined) return console.warn("No ingresaste un arreglo");
 
-//     for (let num of arr){
-//         if (typeof num !== "number") return console.warn(`El valor "${num}" NO es un numero`);
+    if(!(arr instanceof Array)) return console.warn("El valor que ingresaste NO es un arreglo");
+
+    if (arr.length === 0) return console.warn("El arreglo esta vacio");
+
+    for (let num of arr){
+        if (typeof num !== "number") return console.warn(`El valor "${num}" NO es un numero`);
     
-//     }
+    }
 
-//     const newArr = arr.map(el => el * el);
+    const newArr = arr.map(el => el * el);
 
-//     return console.info(`Arreglo original: ${arr}.\n Arreglo elevado al cuadrado ${newArr}`);
-// }
+    return console.info(`Arreglo original: ${arr}.\n Arreglo elevado al cuadrado ${newArr}`);
+}
 
-// devolverCuadrados();
-// devolverCuadrados(true);
-// devolverCuadrados({});
-// devolverCuadrados([]);
-// devolverCuadrados([1,"2",3]);
-// devolverCuadrados([8,4,9]);
+devolverCuadrados();
+devolverCuadrados(true);
+devolverCuadrados({});
+devolverCuadrados([]);
+devolverCuadrados([1,"2",3]);
+devolverCuadrados([8,4,9]);
 
 // 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+
+//EJERCICIO XXII
 
 const arrayMinMax = (arr = undefined) => {
     if (arr === undefined) return console.warn("No ingresaste un arreglo");
@@ -520,3 +525,297 @@ arrayMinMax([2,3, false])
 arrayMinMax([1, 4, 5, 99, -60]);
 
 // 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+
+//EJERCICIO XXIII
+
+const separaParesImpares = (arry = undefined) => {
+    if (arry === undefined) return console.warn("No ingresaste un arreglo");
+
+    if(!(arry instanceof Array)) return console.warn("El valor que ingresaste NO es un arreglo");
+
+    if (arry.length === 0) return console.warn("El arreglo esta vacio");
+
+    for (let num of arry){
+        if (typeof num !== "number") return console.warn(`El valor "${num}" NO es un numero`);
+    
+    }
+
+    return console.info({
+        pares: arry.filter(num => num % 2 === 0),
+        impares: arry.filter(num => num % 2 === 1),
+    })
+}
+separaParesImpares();
+separaParesImpares(true);
+separaParesImpares([]);
+separaParesImpares([1,2,false]);
+separaParesImpares([1,2,3,4,5,6,7,8,9]);
+
+
+
+// 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+
+//EJERCICIO XXIV
+
+const ordenarMayorMenor = (arr = undefined) => {
+    if (arr === undefined) return console.warn("No ingresaste un arreglo");
+
+    if(!(arr instanceof Array)) return console.warn("El valor que ingresaste NO es un arreglo");
+
+    if (arr.length === 0) return console.warn("El arreglo esta vacio");
+
+    for (let num of arr){
+        if (typeof num !== "number") return console.warn(`El valor "${num}" NO es un numero`);
+    
+    }
+
+
+    return console.info({
+        arr,
+        asc: arr.map(el => el).sort(),
+        desc: arr.map(el => el).sort().reverse()
+    });
+}
+
+ordenarMayorMenor();
+ordenarMayorMenor(true);
+ordenarMayorMenor([]);
+ordenarMayorMenor([1,2,false]);
+ordenarMayorMenor([1,5,3,6,4,7,9,8,5]);
+
+// 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+
+//EJERCICIO XXV
+
+const quitarDuplicados = (arr = undefined) => {
+    if(arr === undefined) return console.warn("No ingresaste un arreglo")
+
+    if(!(arr instanceof Array)) return console.warn("El valor que ingresaste no es un error");
+
+    if(arr.length === 0) return console.warn("El arreglo esta vacio");
+
+    if (arr.length === 1) return console.warn("El arreglo debe contener almenos dos elementos");
+
+    return console.info({
+        original: arr,
+        sinDuplicados: arr.filter((value, index, self) => self.indexOf(value)=== index)
+    })
+}
+
+quitarDuplicados();
+quitarDuplicados({});
+quitarDuplicados([]);
+quitarDuplicados([2]);
+quitarDuplicados(["x", 10, "x", 2, "10", 10, true, true]);
+
+
+// 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+
+//EJERCICIO XXVI
+
+const promedio = (arr = undefined) => {
+    if(arr === undefined) return console.warn("No ingreso un arreglo");
+
+    if (!(arr instanceof Array)) return console.warn("El valor ingresado no es un Arreglo");
+
+    if (arr.length === 0) return console.warn("El arreglo esta vacio");
+
+    return console.info(
+        arr.reduce((total,num,index,arr) => {
+            total += num;
+            if(index === arr.length-1){
+                return `El promedio de ${arr.join(" + ")} es ${total / arr.length}`
+            }else{
+                return total;
+            }
+        })
+    )
+}
+
+promedio();
+promedio({});
+promedio([]);
+promedio([9,8,7,6,5,4,3,2,1,0]);
+
+
+
+// 27) Programa una clase llamada Pelicula.
+
+// La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+
+
+// - Todos los datos del objeto son obligatorios.
+// - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y  los 7      restantes números.
+// - Valida que el título no rebase los 100 caracteres.
+// - Valida que el director no rebase los 50 caracteres.
+// - Valida que el año de estreno sea un número entero de 4 dígitos.
+// - Valida que el país o paises sea introducidos en forma de arreglo.
+// - Valida que los géneros sean introducidos en forma de arreglo.
+// - Valida que los géneros introducidos esten dentro de los géneros 
+//      aceptados*.
+// - Crea un método estático que devuelva los géneros aceptados*.
+// - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+//     decimal de una posición.
+//        - Crea un método que devuelva toda la ficha técnica de la película.
+//        - Apartir de un arreglo con la información de 3 películas genera 3 
+//     instancias de la clase de forma automatizada e imprime la ficha técnica 
+//     de cada película.
+
+// * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+
+
+class Pelicula {
+    constructor({id,titulo,director,estreno,pais,generos,calificacion}){
+        this.id = id;
+        this.titulo = titulo;
+        this.director = director;
+        this.estreno = estreno;
+        this.pais = pais;
+        this.generos = generos;
+        this.calificacion = calificacion;
+
+        this.validarIMDB(id);
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarEstreno(estreno);
+        this.validarPaises(pais);
+        this.validarGeneros(generos);
+        this.validarCalificacion(calificacion);
+        
+    }
+
+    static get listaGeneros(){
+        return["Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western."];
+    }
+
+    static generosAceptados(){
+        return console.info(`Los generos aceptados son: ${Pelicula.listaGeneros.join(" ,")}`);
+    }
+
+    validarCadena(propiedad,valor){
+    if(!valor) return console.warn(`${propiedad}"${valor}"Esta vacio`);
+
+    if (typeof valor !== "string") return console.error(`${propiedad} "${valor}" ingresado, NO es una cadena de texto`);
+
+    return true;
+
+    }
+
+    validarLongitudCadena(propiedad,valor,longitud){
+        if (valor.length > longitud) return console.error(`${propiedad} "${valor}" excede el numero de caracteres permitidos (${longitud})`);
+
+    return true;
+    }
+
+    validarNumero(propiedad,valor){
+        if (!valor) return console.error(`${propiedad} "${valor}" Esta vacio`);
+
+        if (typeof valor !== "number") return console.error(`${propiedad}"${valor}"ingresado no es un numero`);
+
+    return true;
+    }
+
+    validarArreglo(propiedad,valor){
+        if(!valor) return console.warn(`${propiedad}"${valor}" esta vacio`);
+
+        if(!(valor instanceof Array)) return console.error(`${propiedad}"${valor}"ingresado NO es un arreglo`);
+        
+        if(valor.length === 0) return console.error(`${propiedad}"${valor}" NO tiene datos `);
+
+        for (let cadena of valor) {
+            if(typeof cadena !== "string") return console.error(`El valor "${cadena}" ingresado, NO es una cadena de texto`);
+        }
+
+    return true;
+    }
+
+    validarIMDB(id){
+        if(this.validarCadena("IMDB id", id))
+            if(!/^([a-z]){2}([0-9]){7}$/.test(id))
+                return console.error(`IMBD id "${id}" no es valido, debe tener 9 caracteres, los 2 primeros letras, los 7 restantes numeros`);
+    }
+
+    validarTitulo(titulo){
+        if(this.validarCadena("Titulo",titulo)){
+            this.validarLongitudCadena("Titulo",titulo,100);
+        }
+    }
+
+    validarDirector(director){
+        if(this.validarCadena("Director",director)){
+            this.validarLongitudCadena("Director",director,50);
+        }
+    }
+
+    validarEstreno(estreno){
+        if(this.validarNumero("Año de estreno", estreno))
+            if(!/^([0-9]){4}$/.test(estreno))
+                return console.error(`Año destreno "${estreno}" no es valido, debe tener 4 numeros`);
+    }
+
+    validarPaises(pais){
+        if(this.validarArreglo("Pais", pais));
+    
+    }
+
+    validarGeneros(generos){
+        if(this.validarArreglo("Generos", generos)){
+            for(let genero of generos){
+                console.log(genero, Pelicula.listaGeneros.includes(genero));
+            }
+        }
+    }
+
+    validarCalificacion(calificación){
+        if(this.validarNumero("Calificacion", calificación))
+            return (calificación < 0 || calificación > 10)
+            ? console.error("La calificacion tiene que estar en un rango entre 0 y 10")
+            : this.calificación = calificación.toFixed(1);
+        
+}
+
+} 
+
+const peli = new Pelicula({
+    id: "hh1478523",
+    titulo: "DARK SIDE",
+    director: "Gaspar Noe",
+    estreno: 1998,
+    pais: ["Colombia -España-Italia"],
+    generos: ["Documentary ,Drama, Family, Fantasy,"],
+    calificacion: 9.5
+    
+
+})
+
+const misPelis = [
+    {
+        id: "tt0758758",
+        titulo: "Into the Wild",
+        director:"Sean Pern",
+        estreno: 2007,
+        pais:["USA"],
+        generos:["Adventure","Biografy","Drama"],
+        calificacion:8.1
+    },
+    {
+        id: "tt1547484",
+        titulo: "Rocky Balboa",
+        director:"Sylvester Stallone",
+        estreno: 2006,
+        pais:["USA"],
+        generos:["Accion","Sport","Drama"],
+        calificacion:7.1
+    },
+    {
+        id: "tt0468569",
+        titulo: "The Dark Night",
+        director:"Cristopher Nolan",
+        estreno: 2008,
+        pais:["USA - UK"],
+        generos:["Accion","Crime","Drama"],
+        calificacion:9.0
+    }
+];
+
+misPelis.forEach(el => new Pelicula(el).fichaTecnica());

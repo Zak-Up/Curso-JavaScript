@@ -12,6 +12,11 @@
         --dark-color: #222;
     }
 
+    .cards {
+        border: thin solid var(--dark-color);
+        padding: 1rem;
+    }
+
     .card {
         display: inline-block;
         background-color: var(--dark-color);
@@ -43,6 +48,7 @@
     <p id="que-es">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ea perspiciatis sit sed! At earum praesentium exercitationem totam unde harum quod, eaque voluptatibus possimus dicta architecto consequatur cum rem voluptates.
     </p>
+
     <nav id="menu">
         <ul>
             <li><a href="#">Seccion 1</a></li>
@@ -53,7 +59,7 @@
         </ul>
     </nav>
     <input type="text" name="nombre" placeholder="Nombre" >
-    <a class="link-dom" href="dom.html"  style="background-color: aquamarine; color: aliceblue" data-id="1" data-description="Document Object Model" >DOM</a>
+    <a class="link-dom" href="dom.html"  style="background-color: rgb(223, 255, 12); color: rgb(12, 12, 12)" data-id="1" data-description="Document Object Model" >DOM</a>
     <section class="cards" >
         <figure class="card" >
             <img src="https://placeimg.com/200/200/tech" alt="Tech">
@@ -76,6 +82,20 @@
             <figcaption>Nature</figcaption>
         </figure>
     </section>
+    <template id="template-card">
+        <figure class="card">
+            <img>
+            <figcaption></figcaption>
+        </figure>
+    </template>
+    <h3>Eventos JavaScript</h3>
+    <h4>Manejadores de eventos</h4>
+    <button onclick="holaMundo()">Evento con atributo HTML</button>
+    <br> <br>
+    <button id="evento-semantico">Evento con manejador semantico</button>
+    <br><br>
+    <button id="evento-multiple">Evento con manejador multiple</button>
+    
     <script src="/44 - DOM/dom.js"></script>
 </body>
 </html>

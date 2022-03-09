@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Desarrollo ejercicios</h1>
+    <script>
+        // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+
+            const contarCaracteres = (cadena = "") => {
+                console.log(cadena.length)
+            }
+
+            contarCaracteres("Hello world");
+
+        // 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+
+            const recortarTexto = (cadena = "", longitud = "") => {
+                console.log(cadena.slice(longitud));
+            }
+
+            recortarTexto("Hola mundo", 4)
+
+        // 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+
+        const separarTexto = (cadena = "", separador = "") => {
+            console.info(cadena.split(separador));
+        }
+
+        separarTexto("Hola que tal"," ");
+
+        // 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+
+        const repetirTexto = (cadena = "", repeticiones = "") => {
+            console.info(cadena.repeat(repeticiones));
+        }
+
+        repetirTexto("Hola mundo", 3);
+
+        // 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+
+        const revertirTexto = (cadena = "") => {
+            console.log(cadena.split("").reverse().join(""));
+        }
+
+        revertirTexto("Hello world")
+
+        // 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+
+        const contarRepeticiones = (cadena = "", repeticiones = "") =>
+        {
+            let i = 0;
+            contador = 0;
+
+            while( i !== -1){
+                i = cadena.indexOf(repeticiones, i);
+                if(i !== -1){
+                    i ++
+                    contador ++;
+                }
+            }return console.log(contador)
+        }
+
+        contarRepeticiones("hola mundo, adios mundo","mundo");
+        
+
+       // 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+
+        const textoPalindromo = (cadena = "") => {
+            
+            let alReves = cadena.split("").reverse().join("");
+
+            if(cadena === alReves) {
+                return console.log(true);
+            } else console.info(false);
+        }
+
+        textoPalindromo("salas");
+
+       // 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+
+        const eliminarPatron = (cadena = "", patron = "") => {
+
+            console.log(cadena.replace(new RegExp(patron, "ig"),""));
+        }
+
+        eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz", "xyz");
+
+       // 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+
+        const numeroAleatorio = console.log(Math.round(Math.random() * 100) + 500);
+
+       // 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true. 
+
+        const numeroCapicua = (numero = "") => {
+
+            numero = numero.toString()
+
+            let alReves = (numero.split("").reverse().join(""));
+            if(numero === alReves){
+                return console.log(true);
+            } else console.log(false)
+            
+        }
+
+        numeroCapicua(2002);
+
+       // 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+
+        const numeroFactorial = (numero = "") => {
+
+            let factorial = 1;
+
+            for(i = numero; i > 1; i-- ) {
+                factorial *= i;
+            }
+            return console.log(factorial)
+        }
+
+        numeroFactorial(5);
+
+       // 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+
+        const numeroPrimo = (numero = "") => {
+
+            let noPrimo = (numero % 2) === 0;
+
+            if(numero === noPrimo){
+                return console.log(false)
+            } else console.info(true)
+        }
+
+        numeroPrimo(7);
+
+       // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+
+        const numeroPar = (numero = "") => {
+
+            let divisible = false
+
+            for(let i = 2; i < numero; i++){
+                if((numero % i) === 0)
+                    return divisible = true
+                    break;
+            } return divisible
+            ? console.log(true)
+            : console.log(false)     
+        }
+
+        numeroPar(29);
+
+       // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(25,"C") devolverá 25°C = 77°F.
+
+        const celciusAFarenheit = (grados = "", fahrenheit = 0) => {
+
+            if(fahrenheit.length !== 1 || !/(C|F)/.test(fahrenheit))
+            return console.log(`El valor ${fahrenheit} no es valido`);
+
+            if(fahrenheit === "C")
+            return console.log(`${grados}°C = ${Math.round(grados * (9/5)) + 32}°F`);
+        }
+
+        celciusAFarenheit(25,"C");
+
+       //15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+
+        
+
+       // 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+    
+       const aplicarDescuento = (valor = "", descuento = "") =>{
+
+        console.log(`$${valor} - ${descuento}% = ${valor - ((valor * descuento)/100)}`);
+       }
+
+       aplicarDescuento(480000,20);
+
+       // 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+
+       
+
+      // 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+
+        const contarLetras = (cadena = "") => {
+
+            cadena = cadena.toLocaleLowerCase()
+
+            let vocales = 0,
+            consonantes = 0;
+
+            for(let letras of cadena){
+                
+                if(/[aeiou]/.test(letras))vocales++
+
+                if(/[bcdfghjklmnpqrstvxxyz]/.test(letras))consonantes++
+            }
+            return console.log(`Vocales: ${vocales}, Consonantes: ${consonantes}.`)
+        }
+
+        contarLetras("Think big");
+
+      // 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+
+        const validarNombre = (nombre = "") => {
+
+
+            let expReg = /^[a-zA-ZñÑ\s]+$/g.test(nombre);
+
+            return (expReg)
+            ? console.info(`${nombre}, es un nombre valido`)
+            : console.info(`${nombre}, NO es un nombre valido`);
+        }
+
+        validarNombre("Andres Restrepo");
+      
+      // 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+
+        const validarEmail = (email = "") => {
+
+        let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(email);
+
+        return (expReg)
+        ? console.info(`El email ${email} es valido`)
+        : console.info(`El email ${email} es invalido`)
+        }
+
+        validarEmail("andresjr195@hotmail.com");
+
+      //21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+
+        const numeroCuadrado = (arr = undefined) => {
+            if(arr === undefined) return console.warn("No ingresaste un arreglo de numeros");
+
+            if(!(arr instanceof Array)) return console.warn("El valor ingresado no es un arreglo");
+
+            if(arr.length === 0) return console.warn("El arreglo esta vacio");
+
+            for(let num of arr){
+                if(typeof num !== "number") return console.error(`El valor ${num} ingresado no es un numero`);
+            }
+
+            const newArr = arr.map(el => el * el);
+
+            return console.info(`Arreglo original: ${arr}, Arreglo elevado al cuadrado ${newArr}`)
+        }
+
+        numeroCuadrado([11,45,5]);
+
+
+
+      //22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+
+
+
+      //23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+    </script>
+</body>
+</html>

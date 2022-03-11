@@ -9,172 +9,172 @@
 <body>
     <h1>Desarrollo ejercicios</h1>
     <script>
-    // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+     // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
 
-        const contCharacters = (str = "") => {
+    const contarCaracteres = (str = "") => {
 
-            console.log(str.length);
-        };
+        console.log(str.length);
+    };
 
-        contCharacters("Hello world");
+    contarCaracteres("Hello world");
 
         // 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
 
-        const cutText = (str = "", num = "") => {
+    const recortarTexto = (str = "", cantidad = "") => {
 
-            console.log(str.slice(num));
-        }
+        console.log(str.slice(cantidad));
+    };
 
-        cutText("Hello world",3);
+    recortarTexto("Hello world",3);
 
 
         // 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
 
-        const separarPalabras = (str = "", separador = "") => {
+    const separarTexto = (str = "", separar = "") => {
 
-            console.log(str.split(separador));
-        }
+        console.log(str.split(separar));
+    };
 
-        separarPalabras("Hi how are you"," ");
+    separarTexto("Hello world"," ");
 
 
         // 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
 
-        const repeatWord = (str = "", repeat = "") => {
+    const repeatText = (str = "", numb = "") => {
 
-            console.log(str.repeat(repeat));
-        };
+        console.log(str.repeat(numb));
+    };
 
-        repeatWord("Hello world",3)
+    repeatText("Hello world",6);
 
 
         // 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
 
-        const reverseWord = (str = "" ) => {
+    const reverseText = (str = "") => {
 
-            console.log(str.split("").reverse().join(""));
-        };
+        console.log(str.split("").reverse().join(""));
+    };
 
-        reverseWord("Hello world");
+    reverseText("Hello world");
 
 
         // 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
 
-        const findRepeatWord = (cadena = "", patron = "") => {
-            
-            let i = 0
-            contador = 0
+    const findRepeatText = (str = "", find = "") => {
+    
+        let i = 0
+        contador = 0;
 
-            while(i != -1){
-                i = cadena.indexOf(patron, i)
-                if(i != -1){
-                    i++
-                    contador++
-                }
-            } return console.log(contador);
-        };
+        while(i !== -1){
+            i = str.indexOf(find, i)
+            if(i !== -1){
+                i++
+                contador++
+            }
+        } return console.log(contador);
+    };
 
-        findRepeatWord("Hola mundo mundo mundo","mundo");
+    findRepeatText("Hello world world world","world");
 
 
        // 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
 
-    const palabraPalindromo = (cadena = "") => {
+    const palindromo = (str = "") => {
 
-        let alReves = (cadena.split("").reverse().join(""))
+        str = str.toLowerCase();
 
-        if(cadena === alReves){
-            return console.log(true)
-        }   else console.log(false);
+        let alReves = str.split("").reverse().join("");
+
+        if(str === alReves){
+            return console.log("Es palindromo")
+        }   else console.log("No es palindromo");
     };
 
-    palabraPalindromo("salas");
+    palindromo("Salas");
 
 
        // 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
 
-    const patronCaracteres = (cadena = "", patron = "") => {
+    const patronCharacters = (str = "", ptr = "") => {
 
-        console.log(cadena.replace(new RegExp(patron, "ig"),""));
+        console.log(str.replace(new RegExp(ptr, "ig"),""));
     };
 
-    patronCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5","xy");
+    patronCharacters("xyz1, xyz2, xyz3, xyz4 y xyz5","xyz");
 
 
        // 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
 
-    const numeroAleatorio = console.log(Math.round(Math.random() * 100)+500);
+    const numbAleat = console.log(Math.round(Math.random() * 100)+500);
 
 
        // 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true. 
 
-    const numeroCapicua = (numero = "") => {
+    const numCapicua = (numb = "") => {
 
-        numero = numero.toString()
+        numb = numb.toString();
 
-        let alReves = (numero.split("").reverse().join(""));
+        let alReves = numb.split("").reverse().join("")
 
-        if(numero === alReves) {
+        if( numb === alReves){
             return console.log(true)
-        }
-            else console.log(false);
+        }   else console.log(false);
+    };
 
-    }
-
-    numeroCapicua(2002);
+    numCapicua(2002);
 
 
        // 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
 
-    const numeroFactorial = (numero = "") => {
+    const numFactorial = (numb = "") => {
 
         let factorial = 1;
 
-        for(i = numero; i > 1; i--){
-            factorial *= i
+        for(let i = numb; i > 1; i--){
+            factorial *= i;
         }
-
-        return console.log(factorial)
+        return console.log(factorial);
     };
 
-    numeroFactorial(20);
+    numFactorial(5)
 
 
        // 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
-    const primo = (numero = "") => {
+
+    const primeNumber = (numb = "") => {
 
         let divisible = false;
 
-        for(let i = 2; i < numero; i++){
-            if((numero % i) === 0)
-            divisible = true
+        for(let i = 2; i < numb; i++){
+            if((numb % i) === 0)
+            divisible = true;
             break;
-        }
+        } 
         return divisible
-        ? console.log("No es primo")
-        : console.log("Si es primo")
+        ? console.log(false)
+        : console.log(true);
     };
 
-    primo(77);
+    primeNumber(7);
 
 
        // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
 
-    const parImpar = (numero = "") => {
+    const parNumber = (numb = "") => {
 
         let divisible = false;
 
-        for(let i = 2; i < numero; i++){
-            if((numero % i) === 0)
-                divisible = true
-                break;
-            
-        } return (divisible)
-        ? console.log("Numero Par")
-        : console.log("Numero impar");
-    }
+        for(let i = 2; i < numb; i++){
+            if(numb % i === 0)
+            divisible = true;
+            break;
+        }
+        return divisible
+        ? console.log(true)
+        : console.log(false);
+    };
 
-    parImpar(7);
+    parNumber(29);
 
 
        // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(25,"C") devolverá 25°C = 77°F.
@@ -182,7 +182,7 @@
     const celciusAFarenheit = (grados = "", fahrenheit = "") => {
 
         if(fahrenheit === "C"){
-            console.log(`${grados}°C = ${Math.round((grados * (9/5))+32)}°F`)
+            return console.log(`${grados}°C = ${Math.round((grados * (9/5))+32)}°F`)
         }
     };
 
@@ -196,16 +196,19 @@
 
        // 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
 
-    const aplicarDescuento = (monto = "", descuento = "") => {
+    const aplicarDescuento = (monto = "", descontar = "") => {
 
-        console.log(`$${monto} - ${descuento}% = $${Math.round(monto - (monto * descuento)/100)}`);
-    }
+        console.log(`$${monto} - ${descontar}% = ${monto - ((monto * descontar)/100)}`)
+    };
 
     aplicarDescuento(10000,20);
+ 
 
        // 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
-
+    
     const calcularAnios = (fecha = undefined) => {
+
+        if(!(fecha instanceof Date)) return console.log("Valor invalido")
 
         let hoyMenosFecha = new Date().getTime() - fecha.getTime();
                 aniosEnMS = 1000*60*60*24*365
@@ -216,100 +219,128 @@
                 :(Math.sign(aniosHumanos) === 1)
                 ? console.info(`Han pasado ${aniosHumanos} años desde ${fecha.getFullYear()}`)
                 : console.info(`Estamos en el año actual ${fecha.getFullYear()}`)
-    }
+    };
 
-    calcularAnios(new Date(1984,2,23));
-    
+    calcularAnios(new Date(1984,4,23))
+
+
 
 
       // 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
 
-    const vocalesConsonantes = (cadena = "") => {
+    const vocalesConsonantes = (str = "") =>{
 
-        cadena = cadena.toLowerCase();
-
-        let = vocales = 0,
+        let vocales = 0
         consonantes = 0;
 
-        for(let letra of cadena){
-            if(/[aeiou]/.test(letra))vocales++
+        for(let letras of str){
+            if(/[aeiou]/.test(letras))vocales++
 
-            if(/[bcdfghjklmnpqrstvwxyz]/.test(letra))consonantes++
-        } 
+            if(/[bcdfghjklmnpqrstvwxyz]/.test(letras))consonantes++
+        }
         return console.log(`Vocales: ${vocales}\nConsonantes: ${consonantes}`);
     };
 
-    vocalesConsonantes("Hola mundo");
-
+    vocalesConsonantes("Hello world");
 
 
       // 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
 
-    const validarNombre = (nombre = "") => {
+    const validarNombre = (str = "") =>{
 
-        nombre = nombre.toLowerCase();
+        let RegExp = /^[a-zA-ZñÑ\s]+$/g.test(str);
 
-        let nombreValido = /^[a-zA-ZñÑ\s]+$/g.test(nombre)
-
-        return nombreValido
+        return RegExp
         ? console.log("Nombre valido")
-        : console.log("Nimbre invalido");
-
+        : console.log("Nombre invalido")
     };
 
-    validarNombre("Andres Restrepo");
+    validarNombre("Andres Restrepo")
 
 
       
       // 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
 
-    const validarEmail = (email = "") => {
-
-        let emailValido = /^[]+$/
-    }
-
 
 
       //21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
 
-    const numeroCuadrado = (numero = "") => {
 
-        let newArr = numero.map(el => el * el)
+    const numeroCuadrado = (numb = undefined) => {
 
-        return console.log(newArr)
-
-    }
+        console.log({
+            original: numb,
+            cuadrado: numb.map(el => el * el)
+        })
+    };
 
     numeroCuadrado([1, 4, 5]);
 
 
-
       //22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
 
-    const separarNumeros = (numero = "") => {
+    const numeroMayorMenor = (numb = undefined) => {
 
         console.log({
-            mayor: Math.max(...numero),
-            menor: Math.min(...numero)
+            Mayor: Math.max(...numb),
+            Menor: Math.min(...numb)
         })
-    }
+    };
 
-    separarNumeros([1, 4, 5, 99, -60]);
-
-
+    numeroMayorMenor([1, 4, 5, 99, -60])
 
       //23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
 
-    const separarParesImpares = (numero = "") => {
+    const separarParesImpares = (numb = undefined) => {
 
         console.log({
-            Pares: numero.filter(num => num % 2 === 0),
-            Impares: numero.filter(num => num % 2 === 1)
+            Pares: numb.filter(num => num % 2 === 0),
+            Impares: numb.filter(num => num % 2 === 1)
         })
-        
+    };
+
+    separarParesImpares([1,2,3,4,5,6,7,8,9,0])
+
+      //24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+
+    const ordenarArreglo = ( numb = undefined) => {
+
+        console.log({
+            original: numb,
+            asc: numb.map(el => el).sort(),
+            desc: numb.map(el => el).sort().reverse()
+        })
+    };
+
+    ordenarArreglo([7, 5,7,8,6]);
+    
+      //25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+
+    const elimineDuplicados = (numb = "") => {
+
+        console.log({
+            original: numb,
+            sinDuplicados: [...new Set(numb)]
+        })
     }
 
-    separarParesImpares([1,2,3,4,5,6,7,8,9,0]);
+    elimineDuplicados(["x", 10, "x", 2, "10", 10, true, true])
+    
+      //26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+
+    const promedioArr = (arr = "") => {
+
+        console.log(
+            arr.reduce((total, item, index, arr) => {
+                total += item;
+                if(index === arr.length -1){
+                    return `${total/arr.length}`
+                } else return total
+            }) 
+        )
+    };
+
+    promedioArr([9,8,7,6,5,4,3,2,1,0]);
 
     </script>
 </body>

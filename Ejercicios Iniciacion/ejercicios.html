@@ -424,17 +424,202 @@ validarEmail("andresjr195@hotmail.com");
                 };
         }
         return console.info(
-            arr.reduce((total, num, index, arr) => {
-                total += num;
+            arr.reduce((acum, item, index, arr) => {
+                acum += item;
                 if(index === arr.length - 1){
-                    return `El promedio de ${arr} es ${total/arr.length}`;
-                }   else return total;
+                    return `El promedio de ${arr} es ${acum/arr.length}`;
+                }   else return acum;
             })
         )
 
     };
 
     promedio([9,8,7,6,5,4,3,2,1,0]);
+
+    //27) Programa una clase llamada Pelicula.
+
+      // La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+      // - Todos los datos del objeto son obligatorios.
+      // - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+      //      7 restantes números.
+      // - Valida que el título no rebase los 100 caracteres.
+      // - Valida que el director no rebase los 50 caracteres.
+      // - Valida que el año de estreno sea un número entero de 4      dígitos.
+      // - Valida que el país o paises sea introducidos en forma de arreglo.
+      // - Valida que los géneros sean introducidos en forma de arreglo.
+      // - Valida que los géneros introducidos esten dentro de los géneros 
+      //      aceptados*.
+      // - Crea un método estático que devuelva los géneros aceptados*.
+      // - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+      //     decimal de una posición.
+      // - Crea un método que devuelva toda la ficha técnica de la película.
+      //   - Apartir de un arreglo con la información de 3 películas genera 3 
+      //     instancias de la clase de forma automatizada e imprime la ficha técnica 
+      //     de cada película.
+
+      // * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+
+    class Pelicula {
+        constructor({id, titulo, director, estreno, pais, generos, calificacion}){
+            this.id = id;
+            this.titulo = titulo;
+            this.director = director;
+            this.estreno = estreno;
+            this.pais = pais;
+            this.generos = generos;
+            this.calificacion = calificacion;
+
+            this.validarIMDB(id);
+            this.validarTitulo(titulo);
+            this.validarDirector(director);
+            this.validarEstreno(estreno);
+            this.validarPais(pais);
+            this.validarGeneros(generos);
+            this.validarCalificacion(calificacion);
+        }
+
+        static get listaGeneros() {
+            return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+        }
+
+        static generosAceptados() {
+            return console.log(`Los generos aceptados son: ${Pelicula.listaGeneros.join(", ")}`);
+        }
+
+        validarCadena(propiedad, valor) {
+        if(!valor) return console.warn(`${propiedad}"${valor}"esta vacio`);
+
+        if(typeof valor !== "string") return console.error(`${propiedad} ${valor} Ingresado no es una cadena de texto`);
+
+        return true;
+    }
+
+        validarLongitudCadena(propiedad, valor, longitud) {
+            if(valor.length > longitud) return console.error(`${propiedad}"${valor}" excede el numero de caracteres permitidos (${longitud})`);
+
+            return true;
+        }
+
+        validarNumero(propiedad, valor){
+            if(typeof valor !== "number") return console.error(`${propiedad}"${valor}" no es un numero`);
+
+            if(!(/^([0-9]){4}$/.test(valor))) return console.error(`${propiedad}"${valor}" Debe tener 4 digitos`);
+
+            return true;
+        }
+        
+        validarNumeroCalificacion(propiedad, valor){
+            if(typeof valor !== "number") return console.error(`${propiedad}"${valor}" no es un numero`);
+
+            if(!(/^([0-9]){2}$/.test(valor))) return console.error(`${propiedad}"${valor}" Debe tener 2 digitos`);
+
+            return true;
+        }
+
+        validarArray(propiedad, valor){
+            if(!valor) return console.warn(`${propiedad}"${valor}"esta vacio`);
+
+            if(!(valor instanceof Array)) return console.log(`${propiedad}"${valor}" Debe ser un arreglo`)
+
+            return true
+        }
+
+        validarIMDB(id) {
+        if(this.validarCadena("IMBD id", id)){
+            if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
+            return console.error(`IMBD id "${id}" no es valido, debe tener 9 caracteres, los 2 primeros letras minusculas, los 7 restantes numeros`);
+            }
+        
+            }
+        }
+
+        validarTitulo(titulo) {
+            if(this.validarCadena("Titulo", titulo))
+            this.validarLongitudCadena("Titulo", titulo, 100);
+        }
+        
+        validarDirector(director) {
+            if(this.validarCadena("Director", director))
+            this.validarLongitudCadena("Director", director, 50);
+        }
+
+        validarEstreno(estreno) {
+            if(this.validarNumero("Estreno", estreno));
+        }
+
+        validarPais(pais) {
+            if(this.validarArray("Pais", pais));
+        }
+
+        validarGeneros(generos) {
+            if(this.validarArray("Generos", generos)){
+                for(let genero of generos) {
+                    if(!Pelicula.listaGeneros.includes(genero)) {
+                        console.error(`Genero(s) incorrectos "${generos.join(", ")}"`);
+                        Pelicula.generosAceptados();
+                    }
+                }
+            }
+        }
+
+        validarCalificacion(calificacion){
+            if(this.validarNumero("Calificacion", calificacion))
+            return (calificacion < 0 || calificacion > 10)
+            ? console.error("La calificacion tiene que esta en un rango de 0 a 10")
+            : this.calificacion = calificacion.toFixed(1);
+        }
+
+        fichaTecnica() {
+            console.info(`Ficha Tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\nAño:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros:"${this.generos.join(", ")}"\nCalificacion:"${this.calificacion}"\nIMDB id:"${this.id}"`)
+        }
+
+    }
+
+    const peli = new Pelicula({
+        id: "ff1234567",
+        titulo: "Game of Thrones",
+        director: "Stephen Spielberg",
+        estreno: 2001,
+        pais: ["EEUU","Colombia"],
+        generos: ["Drama","Sport"],
+        calificacion: 9.5
+
+    })
+
+    peli.fichaTecnica();
+
+    const misPelis = [
+        {
+            id: "ff1234557",
+        titulo: "Game of Thrones",
+        director: "Stephen Spielberg",
+        estreno: 2001,
+        pais: ["EEUU","Colombia"],
+        generos: ["Drama","Sport"],
+        calificacion: 10
+        },
+        {
+            id: "ff1234587",
+        titulo: "Thrones",
+        director: "Stephen",
+        estreno: 2011,
+        pais: ["EEUU","Colombia"],
+        generos: ["Drama","Sport"],
+        calificacion: 10
+        },
+        {
+            id: "ff1234517",
+        titulo: "Game",
+        director: "Stephen",
+        estreno: 2022,
+        pais: ["EEUU","Colombia"],
+        generos: ["Drama"],
+        calificacion: 10
+        }
+
+    ];
+
+    misPelis.forEach(el => new Pelicula(el).fichaTecnica());
     </script>
 </body>
 </html>

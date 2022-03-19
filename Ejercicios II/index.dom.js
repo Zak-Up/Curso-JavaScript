@@ -7,6 +7,11 @@ import darkTheme from "./tema_oscuro.js";
 import responsiveMedia from "./objeto_responsive.js";
 import responsiveTester from "./prueba_responsive.js";
 import userDeviceInfo from "./deteccion_dispositivos.js";
+import networkStatus from "./deteccion_red.js";
+import getGeolocation from "./geolocalizacion.js";
+import searchFilter from "./filtro_busqueda.js";
+import draw from "./sorteo.js";
+
 
 const d = document;
 
@@ -33,9 +38,14 @@ d.addEventListener("DOMContentLoaded", (e) => {
 
     responsiveTester("responsive-tester");
     userDeviceInfo("user-device");
+    getGeolocation("geolocation");
+    searchFilter(".card-filter",".card");
+    draw("#winner-btn",".player");
+    
 });
 
 darkTheme(".dark-theme-btn","dark-mode");
+networkStatus();
 
 // d.addEventListener("keydown", (e) => {
 //     shortcuts(e);

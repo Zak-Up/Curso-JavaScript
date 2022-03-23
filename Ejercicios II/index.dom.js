@@ -11,6 +11,11 @@ import networkStatus from "./deteccion_red.js";
 import getGeolocation from "./geolocalizacion.js";
 import searchFilter from "./filtro_busqueda.js";
 import draw from "./sorteo.js";
+import slider from "./carousel.js";
+import scrollSpy from "./scroll_spy.js";
+import smartVideo from "./video_inteligente.js";
+import contactFormValidations from "./validaciones_formularios.js";
+import speechReader from "./narrador.js";
 
 
 const d = document;
@@ -41,11 +46,16 @@ d.addEventListener("DOMContentLoaded", (e) => {
     getGeolocation("geolocation");
     searchFilter(".card-filter",".card");
     draw("#winner-btn",".player");
+    slider();
+    scrollSpy();
+    smartVideo();
+    contactFormValidations();
     
 });
 
 darkTheme(".dark-theme-btn","dark-mode");
 networkStatus();
+speechReader();
 
 // d.addEventListener("keydown", (e) => {
 //     shortcuts(e);

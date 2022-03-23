@@ -6,7 +6,7 @@ export default function draw(btn, selector){
         random = Math.floor(Math.random() * $players.length),
         winner = $players[random];
 
-        console.log($players, random, winner);
+        // console.log($players, random, winner);
 
         return`El ganador es: ${winner.textContent}`;
     }

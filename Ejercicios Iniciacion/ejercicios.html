@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -436,7 +436,102 @@ validarEmail("andresjr195@hotmail.com");
 
     promedio([9,8,7,6,5,4,3,2,1,0]);
 
-    //27) Programa una clase llamada Pelicula.
+
+    // ---===== Funciones de orden mayor =====--- //
+
+    //27) Haz retornar solo el nombre de los empleados.
+
+    let empleados = [
+        {name: 'Jhon', salary: 90000, hireDate: 'July 1, 2010'},
+        {name: 'David', salary: 75000, hireDate: 'August 15, 2009'},
+        {name: 'Ana', salary: 80000, hireDate: 'December 12, 2011'}
+    ];
+    empleados.forEach((empleado) => console.log(empleado.name));
+
+
+    
+    //28) Haz retornar los instrumentos de precio mayor a 75000.
+
+    let instrumentos = [
+        {name: 'Guitar', price: 90000, hireDate: '2010'},
+        {name: 'Drums', price: 75000, hireDate: '2009'},
+        {name: 'Keys', price: 80000, hireDate: '2011'}
+    ];
+
+    const precioMayor = instrumentos.filter(el => el.price > 75000); 
+    console.log(precioMayor)
+
+    //29) Convierte en mayusculas los nombres
+    
+    let nombres = [
+        {name: 'Jhon', salary: 90000, hireDate: 'July 1, 2010'},
+        {name: 'David', salary: 75000, hireDate: 'August 15, 2009'},
+        {name: 'Ana', salary: 80000, hireDate: 'December 12, 2011'}
+    ];
+
+    const upperCase = nombres.map(el => el.name.toLocaleUpperCase());
+    console.log(upperCase);
+
+    //29) Devuelve los juguetes de medio y alto precio
+
+    let juguetes = [
+        {name: 'Ball', price: 90000, hireDate: '2010'},
+        {name: 'Car', price: 75000, hireDate: '2009'},
+        {name: 'Doll', price: 80000, hireDate: '2011'},
+        {name: 'One', price: 180000, hireDate: '2011'}
+    ];
+
+    const juguetesCaros = juguetes.map(function (el){
+        return{
+            name: el.name,
+            nivel: el.price > 80000 ? 'Alto' : 'Medio'
+        }
+    })
+
+    console.log(juguetesCaros);
+
+    //30) Crea una funcion que ordene los numeros 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 de forma descendente usando sort().
+
+    const ordenarNumeros = (arr = undefined) => {
+
+        let ordenados = arr.sort(function(num1, num2) {
+        return num2 - num1;
+    })
+    return console.log(ordenados);
+    }
+
+    ordenarNumeros([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+
+    //31) Crea una funcion que ordene los elementos de mayor a menor precio usando sort();
+
+    let games = [
+        {name: 'God of War', price: 95000, hireDate: '2010'},
+        {name: 'Prince of persia', price: 75000, hireDate: '2009'},
+        {name: 'Halo', price: 85000, hireDate: '2011'},
+        {name: 'Budokai', price: 185000, hireDate: '2005'},
+        {name: 'Eleven_Soccer', price: 285000, hireDate: '2000'}
+    ];
+
+    const ordenarJuegos = [...games].sort((a, b) => b.price - a.price);
+
+    console.log(ordenarJuegos);
+
+    //32) Crea una funcion que sume el valor total de los arriendos con el metodo reduce();
+
+    let arriendos = [
+        {name: 'Jhon', precio: 900000, hireDate: 'July 1, 2010'},
+        {name: 'David', precio: 750000, hireDate: 'August 15, 2009'},
+        {name: 'Ana', precio: 800000, hireDate: 'December 12, 2011'},
+        {name: 'Andres', precio: 120000, hireDate: 'December 12, 2011'}
+    ];
+
+    const totalArriendos = arriendos.reduce((total, current) => total + current.precio, 0);
+
+    console.log(totalArriendos);
+
+    
+
+    //--) Programa una clase llamada Pelicula.
 
       // La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
       // - Todos los datos del objeto son obligatorios.
@@ -459,164 +554,164 @@ validarEmail("andresjr195@hotmail.com");
 
       // * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
 
-      class Pelicula {
-        constructor({id, titulo, director, estreno, pais, genero, calificacion}){
-            this.id = id;
-            this.titulo = titulo;
-            this.director = director;
-            this.estreno = estreno;
-            this.pais = pais;
-            this.genero = genero;
-            this.calificacion = calificacion;
+    //   class Pelicula {
+    //     constructor({id, titulo, director, estreno, pais, genero, calificacion}){
+    //         this.id = id;
+    //         this.titulo = titulo;
+    //         this.director = director;
+    //         this.estreno = estreno;
+    //         this.pais = pais;
+    //         this.genero = genero;
+    //         this.calificacion = calificacion;
 
-            this.validarIMDB(id);
-            this.validarTitulo(titulo);
-            this.validarDirector(director);
-            this.validarEstreno(estreno);
-            this.validarPais(pais);
-            this.validarGenero(genero);
-            this.validarCalificacion(calificacion);
-        }
+    //         this.validarIMDB(id);
+    //         this.validarTitulo(titulo);
+    //         this.validarDirector(director);
+    //         this.validarEstreno(estreno);
+    //         this.validarPais(pais);
+    //         this.validarGenero(genero);
+    //         this.validarCalificacion(calificacion);
+    //     }
 
-        static get listaGeneros(){
-            return["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
-        }
+    //     static get listaGeneros(){
+    //         return["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+    //     }
 
-        static generosAceptados(){
-            return console.info(`Los generos aceptados son: ${Pelicula.listaGeneros.join(', ')}`);
-        }
+    //     static generosAceptados(){
+    //         return console.info(`Los generos aceptados son: ${Pelicula.listaGeneros.join(', ')}`);
+    //     }
 
-        validarStr(propiedad, valor){
-            if(!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+    //     validarStr(propiedad, valor){
+    //         if(!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
 
-            if(typeof valor !== "string") return console.warn(`${propiedad} "${valor}"Ingresado, No es una cadena de texto`);
+    //         if(typeof valor !== "string") return console.warn(`${propiedad} "${valor}"Ingresado, No es una cadena de texto`);
 
-            return true;
-        }
+    //         return true;
+    //     }
 
-        validarLongitudStr(propiedad, valor, longitud){
-            if(valor.length > longitud) return console.log(`Debe contener los caracteres permitidos ${longitud}`);
+    //     validarLongitudStr(propiedad, valor, longitud){
+    //         if(valor.length > longitud) return console.log(`Debe contener los caracteres permitidos ${longitud}`);
 
-            return true;
-        }
+    //         return true;
+    //     }
 
-        validarNumero(propiedad, valor){
-            if(typeof valor !== "number") return console.warn(`${propiedad} Debe ser un numero`);
+    //     validarNumero(propiedad, valor){
+    //         if(typeof valor !== "number") return console.warn(`${propiedad} Debe ser un numero`);
 
-            return true;
-        }
+    //         return true;
+    //     }
 
-        validarArray(propiedad, valor) {
-            if(!valor) return console.warn(`${propiedad} Esta vacio`);
+    //     validarArray(propiedad, valor) {
+    //         if(!valor) return console.warn(`${propiedad} Esta vacio`);
 
-            if(!(valor instanceof Array)) return console.warn("Debe ser un arreglo");
-        }
+    //         if(!(valor instanceof Array)) return console.warn("Debe ser un arreglo");
+    //     }
 
 
 
-        validarIMDB(id){
-            if(this.validarStr("IMBD", id)){
-                if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
-                    return console.error(`${id} no es valido, debe tener 9 caracteres 1 letras y 7 numeros`)
-                }
-            }
-        }
+    //     validarIMDB(id){
+    //         if(this.validarStr("IMBD", id)){
+    //             if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
+    //                 return console.error(`${id} no es valido, debe tener 9 caracteres 1 letras y 7 numeros`)
+    //             }
+    //         }
+    //     }
 
-        validarTitulo(titulo){
-            if(this.validarStr("Titulo", titulo))
-            this.validarLongitudStr("Titulo", titulo, 50);
+    //     validarTitulo(titulo){
+    //         if(this.validarStr("Titulo", titulo))
+    //         this.validarLongitudStr("Titulo", titulo, 50);
             
-        }
+    //     }
 
-        validarDirector(director){
-            if(this.validarStr("Director", director))
-            this.validarLongitudStr("Director", director, 25);
-        }
+    //     validarDirector(director){
+    //         if(this.validarStr("Director", director))
+    //         this.validarLongitudStr("Director", director, 25);
+    //     }
 
-        validarEstreno(estreno){
-            if(this.validarNumero("Estreno", estreno)){
-                if(!(/^([0-9]){4}$/.test(estreno))){
-                    return console.error(`${estreno} No es valido debe contener 4 digitos`)
-                }
-            }
-        }
+    //     validarEstreno(estreno){
+    //         if(this.validarNumero("Estreno", estreno)){
+    //             if(!(/^([0-9]){4}$/.test(estreno))){
+    //                 return console.error(`${estreno} No es valido debe contener 4 digitos`)
+    //             }
+    //         }
+    //     }
 
-        validarPais(pais){
-            if(this.validarArray("Pais", pais));
-        }
+    //     validarPais(pais){
+    //         if(this.validarArray("Pais", pais));
+    //     }
 
-        validarGenero(genero){
-            if(this.validarArray("Genero", genero)){
-                for(let gen of genero){
-                    //console.log(gen, Pelicula.listaGeneros.includes(gen));
-                    if(!Pelicula.listaGeneros.includes(gen)){
-                        console.error(`Generos incorrectos ${genero.join(", ")}`)
-                        Pelicula.generosAceptados();
+    //     validarGenero(genero){
+    //         if(this.validarArray("Genero", genero)){
+    //             for(let gen of genero){
+    //                 //console.log(gen, Pelicula.listaGeneros.includes(gen));
+    //                 if(!Pelicula.listaGeneros.includes(gen)){
+    //                     console.error(`Generos incorrectos ${genero.join(", ")}`)
+    //                     Pelicula.generosAceptados();
                 
-                    }
-                }
-            }
-        }
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        validarCalificacion(calificacion){
-            if(this.validarNumero("Calificacion", calificacion))
-            return (calificacion < 0 || calificacion > 10)
-            ? console.error('La calificacion tiene que estar en un rango entre 0 y 10')
-            : this.calificacion= calificacion.toFixed(1);
-        }
+    //     validarCalificacion(calificacion){
+    //         if(this.validarNumero("Calificacion", calificacion))
+    //         return (calificacion < 0 || calificacion > 10)
+    //         ? console.error('La calificacion tiene que estar en un rango entre 0 y 10')
+    //         : this.calificacion= calificacion.toFixed(1);
+    //     }
 
-        fichaTecnica(){
-            console.info(`Ficha Tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\nAño:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros: "${this.genero.join(", ")}"\nCalificacion: "${this.calificacion}"\nIMBD id:"${this.id}"`)
-        }
+    //     fichaTecnica(){
+    //         console.info(`Ficha Tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\nAño:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros: "${this.genero.join(", ")}"\nCalificacion: "${this.calificacion}"\nIMBD id:"${this.id}"`)
+    //     }
         
-    }
+    // }
 
     
-    Pelicula.generosAceptados();
+    // Pelicula.generosAceptados();
     
-    const pelis = new Pelicula({
-    id: "kk1234567",
-    titulo: "John Wick",
-    director: "Wachowstky",
-    estreno: 2001,
-    pais: ["EEUU", "UK", "FRANCE"],
-    genero: ["Drama","Accion","Ficcion"],
-    calificacion: 9.5
-    })
+    // const pelis = new Pelicula({
+    // id: "kk1234567",
+    // titulo: "John Wick",
+    // director: "Wachowstky",
+    // estreno: 2001,
+    // pais: ["EEUU", "UK", "FRANCE"],
+    // genero: ["Drama","Accion","Ficcion"],
+    // calificacion: 9.5
+    // })
 
-    pelis.fichaTecnica();
+    // pelis.fichaTecnica();
 
-    const misPelis = [
-    {
-            id: "kk1234567",
-            titulo: "John Wick",
-            director: "Wachowstky",
-            estreno: 2001,
-            pais: ["EEUU", "UK", "FRANCE"],
-            genero: ["Drama","Accion","Ficcion"],
-            calificacion: 9.5,
-    },
-    {
-            id: "kk1234567",
-            titulo: "Matrix",
-            director: "Wachowstky",
-            estreno: 2001,
-            pais: ["EEUU"],
-            genero: ["Drama","Accion","Ficcion"],
-            calificacion: 7.5,
-    },
-    {
-            id: "kk1234567",
-            titulo: "Septimo sello",
-            director: "Wachowstky",
-            estreno: 2001,
-            pais: ["EEUU"],
-            genero: ["Drama","Accion","Ficcion"],
-            calificacion: 5.5,
-    },
-    ]
+    // const misPelis = [
+    // {
+    //         id: "kk1234567",
+    //         titulo: "John Wick",
+    //         director: "Wachowstky",
+    //         estreno: 2001,
+    //         pais: ["EEUU", "UK", "FRANCE"],
+    //         genero: ["Drama","Accion","Ficcion"],
+    //         calificacion: 9.5,
+    // },
+    // {
+    //         id: "kk1234567",
+    //         titulo: "Matrix",
+    //         director: "Wachowstky",
+    //         estreno: 2001,
+    //         pais: ["EEUU"],
+    //         genero: ["Drama","Accion","Ficcion"],
+    //         calificacion: 7.5,
+    // },
+    // {
+    //         id: "kk1234567",
+    //         titulo: "Septimo sello",
+    //         director: "Wachowstky",
+    //         estreno: 2001,
+    //         pais: ["EEUU"],
+    //         genero: ["Drama","Accion","Ficcion"],
+    //         calificacion: 5.5,
+    // },
+    // ]
 
-    misPelis.forEach(el => new Pelicula(el).fichaTecnica());
+    // misPelis.forEach(el => new Pelicula(el).fichaTecnica());
     </script>
 </body>
 </html>
